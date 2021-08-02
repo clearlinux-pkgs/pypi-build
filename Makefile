@@ -1,5 +1,5 @@
 PKG_NAME := build
-URL = https://files.pythonhosted.org/packages/70/56/1a8b602376520cfae7759289595032923c8cdb65821ecc6b87c3e0edcddb/build-0.5.1.tar.gz
+URL = https://files.pythonhosted.org/packages/45/9a/ee95fd7dcb51b6fbb12a08e362dba0d02158ca4fd599ab4e61d0853c2974/build-0.6.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF893C674816AA95D (filipe@lains.me)
 #
 Name     : build
-Version  : 0.5.1
-Release  : 1
-URL      : https://files.pythonhosted.org/packages/70/56/1a8b602376520cfae7759289595032923c8cdb65821ecc6b87c3e0edcddb/build-0.5.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/70/56/1a8b602376520cfae7759289595032923c8cdb65821ecc6b87c3e0edcddb/build-0.5.1.tar.gz
-Source1  : https://files.pythonhosted.org/packages/70/56/1a8b602376520cfae7759289595032923c8cdb65821ecc6b87c3e0edcddb/build-0.5.1.tar.gz.asc
+Version  : 0.6.0
+Release  : 2
+URL      : https://files.pythonhosted.org/packages/45/9a/ee95fd7dcb51b6fbb12a08e362dba0d02158ca4fd599ab4e61d0853c2974/build-0.6.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/45/9a/ee95fd7dcb51b6fbb12a08e362dba0d02158ca4fd599ab4e61d0853c2974/build-0.6.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/45/9a/ee95fd7dcb51b6fbb12a08e362dba0d02158ca4fd599ab4e61d0853c2974/build-0.6.0.tar.gz.asc
 Summary  : A simple, correct PEP517 package builder
 Group    : Development/Tools
 License  : MIT
@@ -19,11 +19,11 @@ Requires: build-python = %{version}-%{release}
 Requires: build-python3 = %{version}-%{release}
 Requires: packaging
 Requires: pep517
-Requires: toml
+Requires: tomli
 BuildRequires : buildreq-distutils3
 BuildRequires : packaging
 BuildRequires : pep517
-BuildRequires : toml
+BuildRequires : tomli
 
 %description
 # build
@@ -67,22 +67,22 @@ Requires: python3-core
 Provides: pypi(build)
 Requires: pypi(packaging)
 Requires: pypi(pep517)
-Requires: pypi(toml)
+Requires: pypi(tomli)
 
 %description python3
 python3 components for the build package.
 
 
 %prep
-%setup -q -n build-0.5.1
-cd %{_builddir}/build-0.5.1
+%setup -q -n build-0.6.0
+cd %{_builddir}/build-0.6.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1627336329
+export SOURCE_DATE_EPOCH=1627948100
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -98,7 +98,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/build
-cp %{_builddir}/build-0.5.1/LICENSE %{buildroot}/usr/share/package-licenses/build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
+cp %{_builddir}/build-0.6.0/LICENSE %{buildroot}/usr/share/package-licenses/build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
