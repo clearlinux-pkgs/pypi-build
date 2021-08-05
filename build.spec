@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF893C674816AA95D (filipe@lains.me)
 #
 Name     : build
-Version  : 0.6.0
-Release  : 2
-URL      : https://files.pythonhosted.org/packages/45/9a/ee95fd7dcb51b6fbb12a08e362dba0d02158ca4fd599ab4e61d0853c2974/build-0.6.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/45/9a/ee95fd7dcb51b6fbb12a08e362dba0d02158ca4fd599ab4e61d0853c2974/build-0.6.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/45/9a/ee95fd7dcb51b6fbb12a08e362dba0d02158ca4fd599ab4e61d0853c2974/build-0.6.0.tar.gz.asc
+Version  : 0.6.0.post1
+Release  : 3
+URL      : https://files.pythonhosted.org/packages/d1/18/0ce502d693c73d25a2d8a2205f80c0f7a13f80edf023ad68b067e97dbafa/build-0.6.0.post1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/d1/18/0ce502d693c73d25a2d8a2205f80c0f7a13f80edf023ad68b067e97dbafa/build-0.6.0.post1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/d1/18/0ce502d693c73d25a2d8a2205f80c0f7a13f80edf023ad68b067e97dbafa/build-0.6.0.post1.tar.gz.asc
 Summary  : A simple, correct PEP517 package builder
 Group    : Development/Tools
 License  : MIT
@@ -74,15 +74,15 @@ python3 components for the build package.
 
 
 %prep
-%setup -q -n build-0.6.0
-cd %{_builddir}/build-0.6.0
+%setup -q -n build-0.6.0.post1
+cd %{_builddir}/build-0.6.0.post1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1627948100
+export SOURCE_DATE_EPOCH=1628206573
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -98,7 +98,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/build
-cp %{_builddir}/build-0.6.0/LICENSE %{buildroot}/usr/share/package-licenses/build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
+cp %{_builddir}/build-0.6.0.post1/LICENSE %{buildroot}/usr/share/package-licenses/build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
