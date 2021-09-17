@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF893C674816AA95D (filipe@lains.me)
 #
 Name     : build
-Version  : 0.6.0.post1
-Release  : 3
-URL      : https://files.pythonhosted.org/packages/d1/18/0ce502d693c73d25a2d8a2205f80c0f7a13f80edf023ad68b067e97dbafa/build-0.6.0.post1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/d1/18/0ce502d693c73d25a2d8a2205f80c0f7a13f80edf023ad68b067e97dbafa/build-0.6.0.post1.tar.gz
-Source1  : https://files.pythonhosted.org/packages/d1/18/0ce502d693c73d25a2d8a2205f80c0f7a13f80edf023ad68b067e97dbafa/build-0.6.0.post1.tar.gz.asc
+Version  : 0.7.0
+Release  : 4
+URL      : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz.asc
 Summary  : A simple, correct PEP517 package builder
 Group    : Development/Tools
 License  : MIT
@@ -27,12 +27,10 @@ BuildRequires : tomli
 
 %description
 # build
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pypa/build/main.svg)](https://results.pre-commit.ci/latest/github/pypa/build/main)
 [![CI check](https://github.com/pypa/build/workflows/check/badge.svg)](https://github.com/pypa/build/actions)
 [![CI test](https://github.com/pypa/build/actions/workflows/test.yml/badge.svg)](https://github.com/pypa/build/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/pypa/build/branch/main/graph/badge.svg)](https://codecov.io/gh/pypa/build)
-[![Documentation Status](https://readthedocs.org/projects/pypa-build/badge/?version=latest)](https://pypa-build.readthedocs.io/en/latest/?badge=latest)
-[![PyPI version](https://badge.fury.io/py/build.svg)](https://pypi.org/project/build/)
-[![Discord](https://img.shields.io/discord/803025117553754132?label=Discord%20chat%20%23build&style=flat-square)](https://discord.gg/pypa)
 
 %package bin
 Summary: bin components for the build package.
@@ -74,15 +72,15 @@ python3 components for the build package.
 
 
 %prep
-%setup -q -n build-0.6.0.post1
-cd %{_builddir}/build-0.6.0.post1
+%setup -q -n build-0.7.0
+cd %{_builddir}/build-0.7.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1628206573
+export SOURCE_DATE_EPOCH=1631906862
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -98,7 +96,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/build
-cp %{_builddir}/build-0.6.0.post1/LICENSE %{buildroot}/usr/share/package-licenses/build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
+cp %{_builddir}/build-0.7.0/LICENSE %{buildroot}/usr/share/package-licenses/build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
