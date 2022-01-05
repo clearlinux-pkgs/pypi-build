@@ -6,7 +6,7 @@
 #
 Name     : pypi-build
 Version  : 0.7.0
-Release  : 11
+Release  : 12
 URL      : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz.asc
@@ -26,6 +26,7 @@ BuildRequires : pypi(pep517)
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(tomli)
 BuildRequires : pypi(wheel)
+Provides: build
 
 %description
 # build
