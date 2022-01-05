@@ -4,26 +4,28 @@
 #
 # Source0 file verified with key 0xF893C674816AA95D (filipe@lains.me)
 #
-Name     : build
+Name     : pypi-build
 Version  : 0.7.0
-Release  : 10
+Release  : 11
 URL      : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz.asc
 Summary  : A simple, correct PEP517 package builder
 Group    : Development/Tools
 License  : MIT
-Requires: build-bin = %{version}-%{release}
-Requires: build-license = %{version}-%{release}
-Requires: build-python = %{version}-%{release}
-Requires: build-python3 = %{version}-%{release}
+Requires: pypi-build-bin = %{version}-%{release}
+Requires: pypi-build-license = %{version}-%{release}
+Requires: pypi-build-python = %{version}-%{release}
+Requires: pypi-build-python3 = %{version}-%{release}
 Requires: packaging
-Requires: pep517
-Requires: tomli
 BuildRequires : buildreq-distutils3
-BuildRequires : packaging
-BuildRequires : pep517
-BuildRequires : tomli
+BuildRequires : pypi(colorama)
+BuildRequires : pypi(importlib_metadata)
+BuildRequires : pypi(packaging)
+BuildRequires : pypi(pep517)
+BuildRequires : pypi(setuptools)
+BuildRequires : pypi(tomli)
+BuildRequires : pypi(wheel)
 
 %description
 # build
@@ -33,42 +35,44 @@ BuildRequires : tomli
 [![codecov](https://codecov.io/gh/pypa/build/branch/main/graph/badge.svg)](https://codecov.io/gh/pypa/build)
 
 %package bin
-Summary: bin components for the build package.
+Summary: bin components for the pypi-build package.
 Group: Binaries
-Requires: build-license = %{version}-%{release}
+Requires: pypi-build-license = %{version}-%{release}
 
 %description bin
-bin components for the build package.
+bin components for the pypi-build package.
 
 
 %package license
-Summary: license components for the build package.
+Summary: license components for the pypi-build package.
 Group: Default
 
 %description license
-license components for the build package.
+license components for the pypi-build package.
 
 
 %package python
-Summary: python components for the build package.
+Summary: python components for the pypi-build package.
 Group: Default
-Requires: build-python3 = %{version}-%{release}
+Requires: pypi-build-python3 = %{version}-%{release}
 
 %description python
-python components for the build package.
+python components for the pypi-build package.
 
 
 %package python3
-Summary: python3 components for the build package.
+Summary: python3 components for the pypi-build package.
 Group: Default
 Requires: python3-core
 Provides: pypi(build)
+Requires: pypi(colorama)
+Requires: pypi(importlib_metadata)
 Requires: pypi(packaging)
 Requires: pypi(pep517)
 Requires: pypi(tomli)
 
 %description python3
-python3 components for the build package.
+python3 components for the pypi-build package.
 
 
 %prep
@@ -80,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635708706
+export SOURCE_DATE_EPOCH=1641411968
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -90,14 +94,14 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
-python3 setup.py build
+python3 -m build --wheel --skip-dependency-check --no-isolation
 
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/build
-cp %{_builddir}/build-0.7.0/LICENSE %{buildroot}/usr/share/package-licenses/build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
-python3 -tt setup.py build  install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-build
+cp %{_builddir}/build-0.7.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
+pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -111,7 +115,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
+/usr/share/package-licenses/pypi-build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
 
 %files python
 %defattr(-,root,root,-)
