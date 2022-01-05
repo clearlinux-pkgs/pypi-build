@@ -6,7 +6,7 @@
 #
 Name     : pypi-build
 Version  : 0.7.0
-Release  : 12
+Release  : 13
 URL      : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz.asc
@@ -53,6 +53,7 @@ license components for the pypi-build package.
 
 
 %package python
+Provides: build-python
 Summary: python components for the pypi-build package.
 Group: Default
 Requires: pypi-build-python3 = %{version}-%{release}
@@ -62,6 +63,7 @@ python components for the pypi-build package.
 
 
 %package python3
+Provides: build-python3
 Summary: python3 components for the pypi-build package.
 Group: Default
 Requires: python3-core
