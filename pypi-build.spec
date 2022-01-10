@@ -6,7 +6,7 @@
 #
 Name     : pypi-build
 Version  : 0.7.0
-Release  : 13
+Release  : 14
 URL      : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz.asc
@@ -17,7 +17,7 @@ Requires: pypi-build-bin = %{version}-%{release}
 Requires: pypi-build-license = %{version}-%{release}
 Requires: pypi-build-python = %{version}-%{release}
 Requires: pypi-build-python3 = %{version}-%{release}
-Requires: packaging
+Requires: pypi(packaging)
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(colorama)
 BuildRequires : pypi(importlib_metadata)
@@ -26,7 +26,6 @@ BuildRequires : pypi(pep517)
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(tomli)
 BuildRequires : pypi(wheel)
-Provides: build
 
 %description
 # build
@@ -53,7 +52,6 @@ license components for the pypi-build package.
 
 
 %package python
-Provides: build-python
 Summary: python components for the pypi-build package.
 Group: Default
 Requires: pypi-build-python3 = %{version}-%{release}
@@ -63,7 +61,6 @@ python components for the pypi-build package.
 
 
 %package python3
-Provides: build-python3
 Summary: python3 components for the pypi-build package.
 Group: Default
 Requires: python3-core
@@ -87,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641411968
+export SOURCE_DATE_EPOCH=1641845048
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
