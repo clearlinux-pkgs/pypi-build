@@ -6,7 +6,7 @@
 #
 Name     : pypi-build
 Version  : 0.7.0
-Release  : 14
+Release  : 15
 URL      : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz.asc
@@ -20,7 +20,6 @@ Requires: pypi-build-python3 = %{version}-%{release}
 Requires: pypi(packaging)
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(colorama)
-BuildRequires : pypi(importlib_metadata)
 BuildRequires : pypi(packaging)
 BuildRequires : pypi(pep517)
 BuildRequires : pypi(setuptools)
@@ -66,7 +65,6 @@ Group: Default
 Requires: python3-core
 Provides: pypi(build)
 Requires: pypi(colorama)
-Requires: pypi(importlib_metadata)
 Requires: pypi(packaging)
 Requires: pypi(pep517)
 Requires: pypi(tomli)
@@ -84,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641845048
+export SOURCE_DATE_EPOCH=1649723438
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
