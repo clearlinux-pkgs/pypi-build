@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xF893C674816AA95D (filipe@lains.me)
 #
 Name     : pypi-build
-Version  : 0.7.0
-Release  : 16
-URL      : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/f0/62/c73b775216bb1f34962beaf005f38460c6161177fef6e068a7a0c30a1597/build-0.7.0.tar.gz.asc
-Summary  : A simple, correct PEP517 package builder
+Version  : 0.8.0
+Release  : 17
+URL      : https://files.pythonhosted.org/packages/52/fa/931038182be739955cf83179d9b9a6ce9832bc5f9a917a006f765cb53a1f/build-0.8.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/52/fa/931038182be739955cf83179d9b9a6ce9832bc5f9a917a006f765cb53a1f/build-0.8.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/52/fa/931038182be739955cf83179d9b9a6ce9832bc5f9a917a006f765cb53a1f/build-0.8.0.tar.gz.asc
+Summary  : A simple, correct PEP 517 build frontend
 Group    : Development/Tools
 License  : MIT
 Requires: pypi-build-bin = %{version}-%{release}
@@ -23,8 +23,6 @@ BuildRequires : pypi(colorama)
 BuildRequires : pypi(packaging)
 BuildRequires : pypi(pep517)
 BuildRequires : pypi(setuptools)
-BuildRequires : pypi(tomli)
-BuildRequires : pypi(wheel)
 
 %description
 # build
@@ -74,10 +72,10 @@ python3 components for the pypi-build package.
 
 
 %prep
-%setup -q -n build-0.7.0
-cd %{_builddir}/build-0.7.0
+%setup -q -n build-0.8.0
+cd %{_builddir}/build-0.8.0
 pushd ..
-cp -a build-0.7.0 buildavx2
+cp -a build-0.8.0 buildavx2
 popd
 
 %build
@@ -85,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1653007140
+export SOURCE_DATE_EPOCH=1653333935
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -110,7 +108,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-build
-cp %{_builddir}/build-0.7.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
+cp %{_builddir}/build-0.8.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
