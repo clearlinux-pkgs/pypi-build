@@ -93,35 +93,18 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
-python3 -m build --wheel --skip-dependency-check --no-isolation
-pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx"
-export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx "
-export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
-export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
-python3 -m build --wheel --skip-dependency-check --no-isolation
+python3 -tt setup.py build 
 
-popd
 
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-build
 cp %{_builddir}/build-0.8.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-build/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9
-pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
-pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
-export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
-pip install --root=%{buildroot}-v3 --no-deps --ignore-installed dist/*.whl
-popd
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
