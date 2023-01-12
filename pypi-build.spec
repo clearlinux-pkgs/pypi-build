@@ -4,7 +4,7 @@
 #
 Name     : pypi-build
 Version  : 0.10.0
-Release  : 31
+Release  : 32
 URL      : https://files.pythonhosted.org/packages/de/1c/fb62f81952f0e74c3fbf411261d1adbdd2d615c89a24b42d0fe44eb4bcf3/build-0.10.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/de/1c/fb62f81952f0e74c3fbf411261d1adbdd2d615c89a24b42d0fe44eb4bcf3/build-0.10.0.tar.gz
 Summary  : A simple, correct Python build frontend
@@ -61,6 +61,7 @@ Requires: python3-core
 Provides: pypi(build)
 Requires: pypi(packaging)
 Requires: pypi(pyproject_hooks)
+Provides: pypi(build)
 
 %description python3
 python3 components for the pypi-build package.
@@ -78,7 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673537414
+export SOURCE_DATE_EPOCH=1673538020
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
