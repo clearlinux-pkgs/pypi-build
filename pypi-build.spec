@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-build
-Version  : 1.0.0
-Release  : 33
-URL      : https://files.pythonhosted.org/packages/e8/27/f6b1c6d316ef655a10668984575c21feee9eda292bc1d718707566010ea0/build-1.0.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/e8/27/f6b1c6d316ef655a10668984575c21feee9eda292bc1d718707566010ea0/build-1.0.0.tar.gz
+Version  : 1.0.3
+Release  : 34
+URL      : https://files.pythonhosted.org/packages/98/e3/83a89a9d338317f05a68c86a2bbc9af61235bc55a0c6a749d37598fb2af1/build-1.0.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/98/e3/83a89a9d338317f05a68c86a2bbc9af61235bc55a0c6a749d37598fb2af1/build-1.0.3.tar.gz
 Summary  : A simple, correct Python build frontend
 Group    : Development/Tools
 License  : MIT
@@ -73,10 +73,10 @@ python3 components for the pypi-build package.
 
 
 %prep
-%setup -q -n build-1.0.0
-cd %{_builddir}/build-1.0.0
+%setup -q -n build-1.0.3
+cd %{_builddir}/build-1.0.3
 pushd ..
-cp -a build-1.0.0 buildavx2
+cp -a build-1.0.3 buildavx2
 popd
 
 %build
@@ -84,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1693929858
+export SOURCE_DATE_EPOCH=1694099826
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
