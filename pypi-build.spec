@@ -5,7 +5,7 @@
 #
 Name     : pypi-build
 Version  : 1.0.3
-Release  : 36
+Release  : 37
 URL      : https://files.pythonhosted.org/packages/98/e3/83a89a9d338317f05a68c86a2bbc9af61235bc55a0c6a749d37598fb2af1/build-1.0.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/98/e3/83a89a9d338317f05a68c86a2bbc9af61235bc55a0c6a749d37598fb2af1/build-1.0.3.tar.gz
 Summary  : A simple, correct Python build frontend
