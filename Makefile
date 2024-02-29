@@ -1,5 +1,5 @@
 PKG_NAME := pypi-build
-URL = https://files.pythonhosted.org/packages/98/e3/83a89a9d338317f05a68c86a2bbc9af61235bc55a0c6a749d37598fb2af1/build-1.0.3.tar.gz
+URL = https://files.pythonhosted.org/packages/9c/f8/8e713caf591c7e7d40890493546c5b76d6fc9824ea6907a89168b68ba903/build-1.1.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
