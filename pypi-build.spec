@@ -6,10 +6,10 @@
 # autospec commit: e738c51
 #
 Name     : pypi-build
-Version  : 1.1.0
-Release  : 39
-URL      : https://files.pythonhosted.org/packages/9c/f8/8e713caf591c7e7d40890493546c5b76d6fc9824ea6907a89168b68ba903/build-1.1.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/9c/f8/8e713caf591c7e7d40890493546c5b76d6fc9824ea6907a89168b68ba903/build-1.1.0.tar.gz
+Version  : 1.1.1
+Release  : 40
+URL      : https://files.pythonhosted.org/packages/55/f7/7bd626bc41b59152248087c1b56dd9f5d09c3f817b96075dc3cbda539dc7/build-1.1.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/55/f7/7bd626bc41b59152248087c1b56dd9f5d09c3f817b96075dc3cbda539dc7/build-1.1.1.tar.gz
 Summary  : A simple, correct Python build frontend
 Group    : Development/Tools
 License  : MIT
@@ -75,10 +75,10 @@ python3 components for the pypi-build package.
 
 
 %prep
-%setup -q -n build-1.1.0
-cd %{_builddir}/build-1.1.0
+%setup -q -n build-1.1.1
+cd %{_builddir}/build-1.1.1
 pushd ..
-cp -a build-1.1.0 buildavx2
+cp -a build-1.1.1 buildavx2
 popd
 
 %build
@@ -86,7 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1709230266
+export SOURCE_DATE_EPOCH=1709323920
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
